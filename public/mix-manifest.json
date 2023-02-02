@@ -1,0 +1,17 @@
+{
+    "/js/codebase.app.js": "/js/codebase.app.js",
+    "/js/laravel.app.js": "/js/laravel.app.js",
+    "/css/codebase.css": "/css/codebase.css",
+    "/css/themes/corporate.css": "/css/themes/corporate.css",
+    "/css/themes/earth.css": "/css/themes/earth.css",
+    "/css/themes/elegance.css": "/css/themes/elegance.css",
+    "/css/themes/flat.css": "/css/themes/flat.css",
+    "/css/themes/pulse.css": "/css/themes/pulse.css",
+    "/js/pages/be_forms_plugins.js": "/js/pages/be_forms_plugins.js",
+    "/js/pages/be_forms_validation.js": "/js/pages/be_forms_validation.js",
+    "/js/pages/be_forms_wizard.js": "/js/pages/be_forms_wizard.js",
+    "/js/pages/be_pages_dashboard.js": "/js/pages/be_pages_dashboard.js",
+    "/js/pages/create_tower.js": "/js/pages/create_tower.js",
+    "/js/pages/edit_tower.js": "/js/pages/edit_tower.js",
+    "/js/pages/tables_datatables.js": "/js/pages/tables_datatables.js"
+}
