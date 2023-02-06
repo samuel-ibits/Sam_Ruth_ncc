@@ -221,7 +221,9 @@ class TowerRepository implements TowerInterface
 
     public function GetAllTowers()
     {
-        return Tower::all();
+        //return Tower::all();
+        $user = auth()->user();
+        return Tower::where('user_id', $user->id);
     }
 
     public function GetAllPaginatedTowers()
@@ -231,10 +233,15 @@ class TowerRepository implements TowerInterface
 
     public function GetTowerCount()
     {
-        return $this->GetAllTowers()->count();
+        $user=auth()->user();
+        return $this->GetAllTowers($user)->count();
     }
 
-
+    // public function GetUserTowerCount()
+    // {
+    //     return $this->GetAllPaginatedTowersById([$id])->count();
+    // }
+    
  public function GetTowerWeeklyCount(){
     return Tower::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
 

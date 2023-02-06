@@ -11,4 +11,6 @@ interface ReportInterface
 
     public function GetAllAudits();
 
+    // public function GetUserTowerCount(Array $id);
+
 }

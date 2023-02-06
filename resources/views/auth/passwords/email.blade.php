@@ -211,6 +211,7 @@
                                 </button>
                             </div>
                         </div>
+                        <a href="{{ route('login') }}">Go Back to Login</a>
                     </form>
                 </div>
                 </div>

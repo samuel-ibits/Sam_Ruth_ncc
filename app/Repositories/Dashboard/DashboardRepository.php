@@ -38,6 +38,11 @@ class DashboardRepository implements DashboardInterface
         return $this->tower->GetTowerCount();
     }
 
+    // public function GetUserTowerCount()
+    // {
+    //     return $this->tower->GetUserTowerCount();
+    // }
+
     public function GetTenantTowerCount()
     {
         return $this->tenant->GetOccupiedTenantCount();

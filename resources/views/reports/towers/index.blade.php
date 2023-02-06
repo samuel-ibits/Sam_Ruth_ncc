@@ -10,39 +10,23 @@
          <form  action="{{route('search')}}" method ="POST">
                 @csrf
                 <br>
-                <div class="container">
-                    <div class="row">
-                        <div class="container-fluid">
-                            <div class="form-group row">
-                                <label for="date" class="col-form-label col-sm-2">From This Date Erected</label>
-                                <div class="col-sm-3">
-                                    <input type="date" class="form-control input-sm" id="fromDate" name="fromDate" />
-                                </div>
-                                <label for="date" class="col-form-label col-sm-2">To This Date Erected</label>
-                                <div class="col-sm-3">
-                                    <input type="date" class="form-control input-sm" id="toDate" name="toDate" />
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="date" class="col-form-label col-sm-2">Other</label>
-                                <div class="col-sm-3">
-                                    <input type="text" class="form-control input-sm" id="other" name="other"placeholder="Search other..." />
-                                </div>
-                                <div class="col-sm-2">
-                                    <button type="submit" class="btn" name="search" title="Search"><img src="https://img.icons8.com/android/24/000000/search.png"/></button>
-                                </div>
-                            </div>
+                <div class="container-fluid">
+                    <div class="form-group row">
+                        <label for="fromDate" class="col-form-label col-sm-2">From This Date Erected</label>
+                        <div class="col-sm-3">
+                        <input type="date" class="form-control input-sm" id="fromDate" name="fromDate" />
+                        </div>
+                        <label for="toDate" class="col-form-label col-sm-2">To This Date Erected</label>
+                        <div class="col-sm-3">
+                        <input type="date" class="form-control input-sm" id="toDate" name="toDate" />
+                        </div>
+                        <div class="col-sm-2">
+                        <button type="submit" class="btn" name="search" title="Search">
+                            <img src="https://img.icons8.com/android/24/000000/search.png"/>
+                        </button>
                         </div>
                     </div>
-                    <!-- <div class="text-center bg-body-light py-2 mb-2">
-                        <div class="dt-buttons btn-group flex-wrap" >          
-                            <button class="btn btn-sm btn-primary buttons-copy buttons-html5" tabindex="0" aria-controls="DataTables_Table_1" type="button"><span>Copy</span></button> 
-                            <button class="btn btn-sm btn-primary buttons-csv buttons-html5" tabindex="0" aria-controls="DataTables_Table_1" type="button"><span>CSV</span></button> 
-                            <button class="btn btn-sm btn-primary buttons-excel buttons-html5" tabindex="0" aria-controls="DataTables_Table_1" type="button"><span>Excel</span></button> 
-                            <button class="btn btn-sm btn-primary buttons-pdf buttons-html5" tabindex="0" aria-controls="DataTables_Table_1" type="button"><span>PDF</span></button> 
-                            <button class="btn btn-sm btn-primary buttons-print" tabindex="0" aria-controls="DataTables_Table_1" type="button"><span>Print</span></button> </div>
-                        </div>
-                </div> -->
+                    </div>
                 </div>
                 <br>
             </form>

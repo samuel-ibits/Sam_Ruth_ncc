@@ -21,5 +21,6 @@ interface DashboardInterface
       public function GetAuditsWeeklyCount();
     public function GetAuditsMonthlyCount();
     public function GetAuditsAverageCount();
+    // public function GetUserTowerCount();
 
 }

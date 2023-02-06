@@ -7,7 +7,7 @@
             <div class="col-6 col-md-4 col-xl-4">
               <a class="block block-rounded text-center" href="{{route('reports.towers.index')}}">
                 <div class="block-content ribbon ribbon-bookmark ribbon-glass ribbon-left bg-gd-dusk">
-                  <div class="ribbon-box">{{ $towercount }}</div>
+                  <div class="ribbon-box">{{$towercount}}</div>
                   <p class="mt-2 mb-3">
                     <i class="si si-bar-chart fa-2x text-white-75"></i>
                   </p>

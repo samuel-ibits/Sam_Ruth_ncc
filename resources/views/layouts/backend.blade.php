@@ -14,8 +14,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- for export -->
-        <!-- <link href="{{URL::to('assets1/css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">
-        <link href="{{URL::to('assets1/css/style.css')}}" rel="stylesheet"> -->
+    
 
         <!-- Icons -->
         <link rel="shortcut icon" href="{{ asset('media/favicons/favicon.png') }}">
@@ -30,7 +29,7 @@
         <link rel="stylesheet" id="css-main" href="{{ asset('css/codebase2.css') }}">
 
         <!-- DataTables Styles -->
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+        <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"> -->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css">
 
 
@@ -582,10 +581,10 @@
         <div class="content py-3">
           <div class="row fs-sm">
             <div class="col-sm-6 order-sm-2 py-1 text-center text-sm-end">
-              Powered by <a class="fw-semibold" href="https://frmlimited.net/" target="_blank">FRM Communications</a>
+              Powered by <a class="fw-semibold" href="https://frmlimited.net/" target="_blank">FRM Communications</a>&copy; <span class="js-year-copy"></span>
             </div>
             <div class="col-sm-6 order-sm-1 py-1 text-center text-sm-start">
-              <a class="fw-semibold" href="https://ncc.gov.ng" target="_blank">Nigerian Communications Commission</a> &copy; <span class="js-year-copy"></span>
+              <!-- <a class="fw-semibold" href="https://ncc.gov.ng" target="_blank">Nigerian Communications Commission</a> &copy; <span class="js-year-copy"></span> -->
             </div>
           </div>
         </div>
@@ -605,7 +604,7 @@
 
         @yield('js_after')
         <!-- DataTables JS-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        
         <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
