@@ -82,6 +82,20 @@ class TowerController extends Controller
     public function index(Request $request)
     {
         //
+        $user = $this->user->GetUserById(Auth::user()->id);
+
+        if($user->isAdmi==1){
+            $towerdrafts = $this->tower->GetTowerDraftByUser(Auth::user());
+            $towerownerids = $user->towerownerusers->pluck('tower_id')->toArray();
+            //$towerowners = $user->towerowners;
+            //
+            //$towerownerids = $towerowners->pluck("pivot")->pluck('tower_id')->toArray();
+            // call it GetPaginatedTowersById($ids)
+            $towers = $this->tower->GetAllTowers();
+            // $this->tower->GetAllPaginatedTowersById($towerownerids);
+
+            return view('towers.index', compact('towers', 'towerdrafts'))->with('i', ($request->input('page', 1) - 1) * 5);
+        }else{ 
         $towerdrafts = $this->tower->GetTowerDraftByUser(Auth::user());
         $user = $this->user->GetUserById(Auth::user()->id);
         $towerownerids = $user->towerownerusers->pluck('tower_id')->toArray();
@@ -92,6 +106,7 @@ class TowerController extends Controller
         $towers = $this->tower->GetAllPaginatedTowersById($towerownerids);
         return view('towers.index', compact('towers', 'towerdrafts'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
+        }
     }
 
 
@@ -288,6 +303,7 @@ class TowerController extends Controller
             $towerdraft->no_of_sections = $request["no_of_sections"];
             $towerdraft->name = $request["tower_name"];
             $towerowner = $this->tower->GetTowerOwnerByTowerOwnerId($request["tower_owner"]);
+            // $$towerdraft->user_id = $this->tower->GetTowerOwnerByTowerOwnerId($request["tower_owner"]);
             $towerdraft->towerowner()->associate($towerowner);
             $lga = $this->lga->GetLGAbyLGAId($request["lga"]);
             $towerdraft->lga()->associate($lga);

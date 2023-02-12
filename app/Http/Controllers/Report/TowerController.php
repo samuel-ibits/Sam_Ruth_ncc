@@ -32,7 +32,7 @@ class TowerController extends Controller
         $userstower = $this->tower->GetTowerDraftByUser(Auth::user());
         $user = $this->user->GetUserById(Auth::user()->id);
         $towerownerids = $user->towerownerusers->pluck('tower_id')->toArray();
-         if($user->is_admin==1){
+         if($user->isAdmin=="1"){
          $towers = $this->report->GetAllTowers();
          return view('reports.towers.index', compact('towers'))->with('i', ($request->input('page', 1) - 1)* 5);
          }else{

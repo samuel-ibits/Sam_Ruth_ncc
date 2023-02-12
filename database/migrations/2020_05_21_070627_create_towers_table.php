@@ -16,6 +16,7 @@ class CreateTowersTable extends Migration
         Schema::table('towers', function (Blueprint $table) {
             Schema::create('towers', function (Blueprint $table) {
                 $table->bigIncrements('id');
+                $table->varChar('user_id', 20);
                 $table->string('name');
                 $table->timestamps();
                 $table->unsignedBigInteger('tower_owner_id');
@@ -33,8 +34,6 @@ class CreateTowersTable extends Migration
                 $table->unique(['longitude', 'latitude']);
                 $table->timestamp('erected_at')->nullable();
                 $table->softDeletes();
-
-             
                 $table->foreign('tower_type_id')
                         ->references('id')
                         ->on('tower_types')
