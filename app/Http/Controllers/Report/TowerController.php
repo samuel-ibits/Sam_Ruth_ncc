@@ -25,13 +25,27 @@ class TowerController extends Controller
         $this->user = $user;
     }
 
+
+
     public function index(Request $request)
     {
         $userstower = $this->tower->GetTowerDraftByUser(Auth::user());
         $user = $this->user->GetUserById(Auth::user()->id);
         $towerownerids = $user->towerownerusers->pluck('tower_id')->toArray();
-        $towers = $this->tower->GetAllPaginatedTowersById($towerownerids);
-        return view('reports.towers.index', compact('towers'))->with('i', ($request->input('page', 1) - 1)* 5);
+         if($user->is_admin==1){
+         $towers = $this->report->GetAllTowers();
+         return view('reports.towers.index', compact('towers'))->with('i', ($request->input('page', 1) - 1)* 5);
+         }else{
+         $towers = $this->tower->GetAllPaginatedTowersById($towerownerids);
+         return view('reports.towers.index', compact('towers'))->with('i', ($request->input('page', 1) - 1)* 5);
+         }
     }
+
+    // public function indexadmin(Request $request)
+    // {
+
+        
+    
+    // }
 
 }
