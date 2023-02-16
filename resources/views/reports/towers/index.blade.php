@@ -39,6 +39,58 @@
 
             <div class="block-content">
                 <div class="table-responsive">
+<!-- PRINT DATA -->
+<table class="table table-striped table-vcenter js-dataTable-buttons " id="print" style="display:none;">
+                        <input type="hidden" name="" value="{{$i=0}}">
+                        {{-- {{dd($towers)}} --}}
+                        <thead>
+                            <tr>
+                                <th>S/N</th>
+                                <th>Name</th>
+                                <th>NCC identity</th>
+                                <th>Tower Owner</th>
+                                <th>Tower Type</th>
+                                <th>Height</th>
+                                <th>No of sections</th>
+                                <th>Landlord</th>
+                                <th>Contact number</th>
+                                <th>address</th>
+                                <th>State</th>
+                                <th>LGA</th>
+                                <th>Longitude</th>
+                                <th>Latitude</th>
+                                <th>Date Erected</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @forelse ($towers as $tower)
+                            <input type="hidden" name="" value="{{$i++}}">
+                            <tr>
+                                <td>@if (request()->input('page'))
+                                    {{$i + ((request()->input('page') - 1) * 5)}}
+                                @else
+                                    {{$i}}
+                                @endif</td>
+                                <td>{{$tower['name']}}</td>
+                                <td>{{$tower['ncc_identity']}}</td>
+                                <td>{{$tower['towerowner']['name']}}</td>
+                                <td>{{$tower['towertype']['name']}}</td>
+                                <td>{{$tower['height'] ." M"}}</td>
+                                <td>{{$tower['no_of_sections']}} {{$tower['measurement_unit']}}</td>
+                                <td>{{$tower['landlord_name']}}</td>
+                                <td>{{$tower['contact_number']}}</td>
+                                <td>{{$tower['address']}}</td>
+                                <td>{{$tower['lga']['state']['name']}}</td>
+                                <td>{{$tower['lga']['name']}}</td>
+                                <td>{{$tower['longitude']}}</td>
+                                <td>{{$tower['latitude']}}</td>
+                                <td>{{$tower['erected_at']}}</td>
+                            </tr>
+                        @empty
+                        @endforelse
+                        </tbody>
+                    </table>
                     
                     <table class="table table-striped table-vcenter js-dataTable-buttons " id="tower_profile">
                         <input type="hidden" name="" value="{{$i=0}}">
@@ -91,6 +143,10 @@
                         @endforelse
                         </tbody>
                     </table>
+                    
+
+
+
 
             {{$towers->links()}}
                 </div>
@@ -103,7 +159,7 @@
 @section('js_after')
 <script>
     $(document).ready(function() {
-    $('#tower_profile').DataTable( {
+    $('#print').DataTable( {
         dom: 'Bfrtip',
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
