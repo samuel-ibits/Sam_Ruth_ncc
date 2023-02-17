@@ -225,6 +225,12 @@ class TowerRepository implements TowerInterface
         $user = auth()->user();
         return Tower::where('user_id', $user->id);
     }
+    public function GetTotalTowers()
+    {
+        return Tower::all();
+       
+    }
+
 
     public function GetAllPaginatedTowers()
     {

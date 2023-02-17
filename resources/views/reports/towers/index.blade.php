@@ -40,9 +40,9 @@
             <div class="block-content">
                 <div class="table-responsive">
 <!-- PRINT DATA -->
-<table class="table table-striped table-vcenter js-dataTable-buttons " id="print" style="display:none;">
+<table class="table table-striped table-vcenter js-dataTable-buttons " id="print" >
                         <input type="hidden" name="" value="{{$i=0}}">
-                        {{-- {{dd($towers)}} --}}
+                        {{-- {{dd($towerscom)}} --}}
                         <thead>
                             <tr>
                                 <th>S/N</th>
@@ -64,7 +64,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @forelse ($towers as $tower)
+                        @forelse ($towerscom as $tower)
                             <input type="hidden" name="" value="{{$i++}}">
                             <tr>
                                 <td>@if (request()->input('page'))
@@ -92,7 +92,7 @@
                         </tbody>
                     </table>
                     
-                    <table class="table table-striped table-vcenter js-dataTable-buttons " id="tower_profile">
+                    <table class="table table-striped table-vcenter js-dataTable-buttons " id="tower_profile" style="display:none;">
                         <input type="hidden" name="" value="{{$i=0}}">
                         {{-- {{dd($towers)}} --}}
                         <thead>

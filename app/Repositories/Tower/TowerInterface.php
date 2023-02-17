@@ -61,6 +61,7 @@ interface TowerInterface{
     public function GetAllPaginatedTowersById(Array $id);
 
     public function GetAllTowers();
+    public function GetTotalTowers();
 
     public function GetTowerCount();
 
