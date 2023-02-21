@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Repositories\Tower;
 
 use App\AuditAgentTower;
@@ -10,11 +11,14 @@ use App\TowerDraft;
 use App\TowerOwner;
 use App\User;
 
-interface TowerInterface{
+interface TowerInterface
+{
 
     public function AddTowerDraft(TowerDraft $towerdraft);
 
     public function GetTowerDraftByUser(User $user);
+
+    public function GetTowerByUser(User $user);
 
     public function GetTowerDraftById($id);
 
@@ -30,43 +34,45 @@ interface TowerInterface{
 
     public function GetAuditAgentTowerById($auditagenttowerid);
 
-    public function DeleteTowerInsurance($towerinsuranceid, Array $delete_data);
+    public function DeleteTowerInsurance($towerinsuranceid, array $delete_data);
 
-    public function DeleteTowerTenant($towertenantid, Array $delete_data);
+    public function DeleteTowerTenant($towertenantid, array $delete_data);
 
-    public function AddTowerInsurance($towerid, Array $post_data);
+    public function AddTowerInsurance($towerid, array $post_data);
 
-    public function AddTowerTenant($towerid, Array $post_data);
+    public function AddTowerTenant($towerid, array $post_data);
 
-    public function UpdateTowerInsurance($towerinsuranceid, Array $post_data);
+    public function UpdateTowerInsurance($towerinsuranceid, array $post_data);
 
     public function UpdateTowerTenant(TenantTower $tenanttower);
 
     public function UpdateTower(Tower $tower);
 
-    public function CreateAuditSchedule($towerid, Array $post_data);
+    public function CreateAuditSchedule($towerid, array $post_data);
 
-    public function UpdateTowerAuditSchedule($towerauditscheduleid, Array $post_data);
+    public function UpdateTowerAuditSchedule($towerauditscheduleid, array $post_data);
 
-    public function GetTowerAuditScheduleByTowerIdAndDateRange($towerid, Array $daterange);
+    public function GetTowerAuditScheduleByTowerIdAndDateRange($towerid, array $daterange);
 
     public function GetAuditByTowerIdAndAuditAgentIdAuditDate($towerid, $auditagentid, $auditdate);
 
-    public function CreateAuditScheduleAudiType(AuditAgentTower $auditagenttower, Array $audittypeids);
+    public function CreateAuditScheduleAudiType(AuditAgentTower $auditagenttower, array $audittypeids);
 
     public function UpdateAuditScheduleAudiType(AuditAgentTower $auditagenttowerid, $auditscheduleauditypeid, $audittypes);
 
     public function GetAllPaginatedTowers();
-    
-    public function GetAllPaginatedTowersById(Array $id);
+
+    public function GetAllPaginatedTowersById(array $id);
 
     public function GetAllTowers();
 
     public function GetTowerCount();
 
+    public function GetTowerCountByUser(User $user);
+
     public function GetTowerOwnerByTowerOwnerId(TowerOwner $towerOwner);
 
-    public function CreateTowerOwnerUser($userid, $towerownerid, $towerid=0);
+    public function CreateTowerOwnerUser($userid, $towerownerid, $towerid = 0);
 
     public function GetTowerOwnersByIds(array $towerownerids);
 
@@ -78,8 +84,9 @@ interface TowerInterface{
 
     public function GetPowerSourceTypeTowerByTowerId($towerid);
 
+    public function GetTowerWeeklyCount();
 
- public function GetTowerWeeklyCount();
     public function GetTowerMonthlyCount();
+
     public function GetTowerAverageCount();
 }

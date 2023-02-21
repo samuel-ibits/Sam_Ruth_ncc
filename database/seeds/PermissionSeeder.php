@@ -39,6 +39,14 @@ class PermissionSeeder extends Seeder
                 "name" => "view_insurances_report",
                 "guard_name" => "web",
                 "description" => "view_insurances_report"
+            ], [
+                "name" => "admin_dashboard",
+                "guard_name" => "web",
+                "description" => "admin_dashboard"
+            ], [
+                "name" => "user_dashboard",
+                "guard_name" => "web",
+                "description" => "user_dashboard"
             ]
         ];
 

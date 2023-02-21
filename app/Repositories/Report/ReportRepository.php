@@ -9,11 +9,11 @@ use App\Repositories\Tower\TowerInterface;
 
 class ReportRepository implements ReportInterface
 {
-    private $tower,
-    $insurance,
-    $tenant,
-    $audit,
-    $maintenance;
+    private TowerInterface $tower;
+    private InsuranceInterface $insurance;
+    private TenantInterface $tenant;
+    private AuditInterface $audit;
+    private MaintenanceInterface $maintenance;
 
     public function __construct(TowerInterface $tower,
     InsuranceInterface $insurance,

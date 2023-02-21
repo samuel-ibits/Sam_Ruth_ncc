@@ -100,6 +100,7 @@
     </div>
 @endsection
 
+
 @section('js_after')
 <script>
     $(document).ready(function() {

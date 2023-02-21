@@ -1,9 +1,11 @@
 <?php
+
 namespace App\Repositories\Menu;
 
 use App\Menu;
 
-interface MenuInterface {
+interface MenuInterface
+{
 
     public function GetAllMenu();
 
@@ -17,4 +19,5 @@ interface MenuInterface {
 
     public function DeleteMenu(Menu $menu);
 
+    public function GetEntryMenusByUser();
 }

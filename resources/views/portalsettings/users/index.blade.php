@@ -49,8 +49,8 @@
                                         </form>
                                         @endif
                                         @if (Auth::user()->isAdmin)
-                                        {{-- <a class="btn btn-info" href="{{ route('users.show',$user) }}">Show</a>
-                                        <a class="btn btn-primary" href="{{ route('users.edit',$user) }}">Edit</a>--}}
+                                        {{-- <a class="btn btn-info" href="{{ route('users.show',$user) }}">Show</a>--}}
+                                        <a class="btn btn-primary" href="{{ route('users.edit',$user) }}">Edit</a>
                                         {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user],'style'=>'display:inline']) !!}
                                             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                                         {!! Form::close() !!}

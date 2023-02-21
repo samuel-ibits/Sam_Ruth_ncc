@@ -24,6 +24,7 @@
         <!-- Fonts and Styles -->
         @yield('css_before')
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,400i,600,700">
+
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&display=swap">
         <!-- <link rel="stylesheet" id="css-main" href="{{ asset('css/codebase.css') }}"> -->
         <link rel="stylesheet" id="css-main" href="{{ asset('css/codebase2.css') }}">
@@ -32,6 +33,7 @@
         <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"> -->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css">
 
+       <!-- <link rel="stylesheet" id="css-main" href="{{ mix('/css/codebase.css') }}"> -->
 
         <!-- You can include a specific file from public/css/themes/ folder to alter the default color theme of the template. eg: -->
         <!-- <link rel="stylesheet" id="css-theme" href="{{ mix('/css/themes/corporate.css') }}"> -->
@@ -44,33 +46,22 @@
         <!-- Page Container -->
         <!--
             Available classes for #page-container:
-
         GENERIC
-
             'enable-cookies'                            Remembers active color theme between pages (when set through color theme helper Template._uiHandleTheme())
-
         SIDEBAR & SIDE OVERLAY
-
             'sidebar-r'                                 Right Sidebar and left Side Overlay (default is left Sidebar and right Side Overlay)
             'sidebar-mini'                              Mini hoverable Sidebar (screen width > 991px)
             'sidebar-o'                                 Visible Sidebar by default (screen width > 991px)
             'sidebar-o-xs'                              Visible Sidebar by default (screen width < 992px)
             'sidebar-inverse'                           Dark themed sidebar
-
             'side-overlay-hover'                        Hoverable Side Overlay (screen width > 991px)
             'side-overlay-o'                            Visible Side Overlay by default
-
             'enable-page-overlay'                       Enables a visible clickable Page Overlay (closes Side Overlay on click) when Side Overlay opens
-
             'side-scroll'                               Enables custom scrolling on Sidebar and Side Overlay instead of native scrolling (screen width > 991px)
-
         HEADER
-
             ''                                          Static Header if no class is added
             'page-header-fixed'                         Fixed Header
-
         HEADER STYLE
-
             ''                                          Classic Header style if no class is added
             'page-header-modern'                        Modern Header style
             'page-header-inverse'                       Dark themed Header (works only with classic Header style)
@@ -78,9 +69,7 @@
                                                         (absolute position, perfect for light images underneath - solid light background on scroll if the Header is also set as fixed)
             'page-header-glass page-header-inverse'     Dark themed Header with transparency by default
                                                         (absolute position, perfect for dark images underneath - solid dark background on scroll if the Header is also set as fixed)
-
         MAIN CONTENT LAYOUT
-
             ''                                          Full width Main Content if no class is added
             'main-content-boxed'                        Full width Main Content with a specific maximum width (screen width > 1200px)
             'main-content-narrow'                       Full width Main Content with a percentage width (screen width > 1200px)
@@ -211,11 +200,9 @@
             <!-- Sidebar -->
             <!--
                 Helper classes
-
                 Adding .sidebar-mini-hide to an element will make it invisible (opacity: 0) when the sidebar is in mini mode
                 Adding .sidebar-mini-show to an element will make it visible (opacity: 1) when the sidebar is in mini mode
                     If you would like to disable the transition, just add the .sidebar-mini-notrans along with one of the previous 2 classes
-
                 Adding .sidebar-mini-hidden to an element will hide it when the sidebar is in mini mode
                 Adding .sidebar-mini-visible to an element will show it only when the sidebar is in mini mode
                     - use .sidebar-mini-visible-b if you would like to be a block when visible (display: block)
@@ -246,7 +233,11 @@
 
                             <!-- Logo -->
                             <div class="content-header-item">
+
                                 <a class="link-effect font-w700" href="{{url('https://ncc.gov.ng')}}">
+
+                               <!-- conflict comment <a class="link-effect font-w700" href="/"> -->
+
                                     <img src="{{ asset('media/svgs/ncc-logo.svg') }}" style="height:100px;" />
                                 </a>
                             </div>
@@ -260,7 +251,7 @@
                     <div class="content-side content-side-full">
                         <ul class="nav-main">
                             <li>
-                                <a class="{{ request()->is('admin/index') ? ' active' : '' }}" href="{{url('/dashboards')}}">
+                                <a class="{{ request()->is('admin/index') ? ' active' : '' }}" href="/dashboards">
                                     <i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span>
                                 </a>
                             </li>
@@ -275,11 +266,8 @@
                                     <ul>
                                         @foreach ($portalmenu as $menu)
                                             {{-- {{!! $menu }} --}}
-                                            @php
-                                            $menulink = '/'.$menu['menu']['folder'].'/'.$menu['url'];
-                                            @endphp
                                             <li>
-                                                <a class="{{ request()->is($menu['menu']['folder'].'/'.$menu['url'].'/*') ? ' active' : '' }}" href="{{url($menulink)}}">{{$menu['name']}}</a>
+                                                <a class="{{ request()->is($menu['menu']['folder'].'/'.$menu['url'].'/*') ? ' active' : '' }}" href="/{{$menu['menu']['folder'].'/'.$menu['url']}}">{{$menu['name']}}</a>
                                             </li>
                                             {{-- {{dd($portalmenu)}} --}}
                                         @endforeach
@@ -596,11 +584,13 @@
         
 
         <!-- Codebase Core JS -->
+        
         <script src="{{ asset('js/codebase.app.js') }}"></script>
         <!-- <script src="{{ asset('js/pages/tables_datatables.js') }}"></script> -->
+       <!-- conflict check <script src="{{ mix('js/codebase.app.js') }}"></script> -->
 
         <!-- Laravel Scaffolding JS -->
-        <script src="{{ asset('js/laravel.app.js') }}"></script>
+        <script src="{{ mix('js/laravel.app.js') }}"></script>
 
         @yield('js_after')
         <!-- DataTables JS-->

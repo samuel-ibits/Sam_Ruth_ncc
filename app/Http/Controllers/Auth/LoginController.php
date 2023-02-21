@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Menu\MenuInterface;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
@@ -27,15 +28,22 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/dashboards';
-
+    protected MenuInterface $menu;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(MenuInterface $menu)
     {
+        $this->menu = $menu;
         $this->middleware('guest')->except('logout');
+    }
+
+    public function redirectTo()
+    {
+        // dd($this->menu->GetEntryMenusByUser());
+        return $this->menu->GetEntryMenusByUser();
     }
 
     public function username()

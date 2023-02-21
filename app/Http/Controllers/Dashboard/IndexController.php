@@ -16,7 +16,6 @@ class IndexController extends Controller
     }
     public function index()
     {
-        $usertowercount= $this->dashboard->GetUserTowerCount();
         $towercount = $this->dashboard->GetTowerCount();
         $tenantcount = $this->dashboard->GetTenantTowerCount();
         $insurancecount = $this->dashboard->GetInsurancesCount();

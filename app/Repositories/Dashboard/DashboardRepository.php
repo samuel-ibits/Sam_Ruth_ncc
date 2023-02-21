@@ -10,22 +10,27 @@ use App\Repositories\Maintenance\MaintenanceInterface;
 use App\Repositories\MaintenanceAgent\MaintenanceAgentInterface;
 use App\Repositories\Tenant\TenantInterface;
 use App\Repositories\Tower\TowerInterface;
+use App\User;
 use Carbon\Carbon;
 
 class DashboardRepository implements DashboardInterface
 {
 
-    private $tower;
-    private $tenant;
-    private $insurance;
-    private $maintenance;
-    private $audit;
+    private TowerInterface $tower;
+    private TenantInterface $tenant;
+    private InsuranceInterface $insurance;
+    private MaintenanceInterface $maintenance;
+    private AuditInterface $audit;
 
 
 
-    public function __construct(TowerInterface $tower, TenantInterface $tenant,
-    InsuranceInterface $insurance, MaintenanceInterface $maintenance, AuditInterface $audit)
-    {
+    public function __construct(
+        TowerInterface $tower,
+        TenantInterface $tenant,
+        InsuranceInterface $insurance,
+        MaintenanceInterface $maintenance,
+        AuditInterface $audit
+    ) {
         $this->tower = $tower;
         $this->tenant = $tenant;
         $this->insurance = $insurance;
@@ -33,15 +38,13 @@ class DashboardRepository implements DashboardInterface
         $this->audit = $audit;
     }
 
-    public function GetTowerCount()
+    public function GetTowerCount(User $user = null)
     {
+        if($user) {
+            return $this->tower->GetTowerCountByUser($user);
+        }
         return $this->tower->GetTowerCount();
     }
-
-    // public function GetUserTowerCount()
-    // {
-    //     return $this->tower->GetUserTowerCount();
-    // }
 
     public function GetTenantTowerCount()
     {
@@ -63,30 +66,29 @@ class DashboardRepository implements DashboardInterface
         return $this->audit->GetAuditAgentCount();
     }
 
-     public function GetTowerWeeklyCount(){
+    public function GetTowerWeeklyCount()
+    {
         return $this->tower->GetTowerWeeklyCount();
-
-     }
-    public function GetTowerMonthlyCount(){
+    }
+    public function GetTowerMonthlyCount()
+    {
         return $this->tower->GetTowerMonthlyCount();
-
     }
-    public function GetTowerAverageCount(){
+    public function GetTowerAverageCount()
+    {
         return $this->tower->GetTowerAverageCount();
-
     }
 
-      public function GetAuditsWeeklyCount(){
+    public function GetAuditsWeeklyCount()
+    {
         return $this->audit->GetAuditsWeeklyCount();
-
-      }
-    public function GetAuditsMonthlyCount(){
+    }
+    public function GetAuditsMonthlyCount()
+    {
         return $this->audit->GetAuditsMonthlyCount();
-
     }
-    public function GetAuditsAverageCount(){
+    public function GetAuditsAverageCount()
+    {
         return $this->audit->GetAuditsAverageCount();
-
     }
-
 }

@@ -130,7 +130,8 @@ class SubmenuController extends Controller
             array_push($permissions, $permission);
         }
 
-        //dd($submenu->permission->id);
+        
+        //dd($submenu);
         return view('portalsettings.submenus.edit', compact('submenu', 'menus', 'permissions'));
 
     }
@@ -144,6 +145,7 @@ class SubmenuController extends Controller
      */
     public function update(Request $request,  Submenu $submenu)
     {
+        //dd($request);
         if($request->has('permission')){
             $request->validate([
                 'name' => 'required',

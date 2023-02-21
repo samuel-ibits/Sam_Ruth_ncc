@@ -34,11 +34,39 @@
                 <div class="form-group row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-material floating">
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autocomplete="off" autofocus>
+                            <input id="firstname" type="text" class="form-control @error('firstname') is-invalid @enderror" name="firstname" value="{{ $user->firstname }}" required autocomplete="off" autofocus>
 
-                            <label for="name" class="">{{ __('Name') }}</label>
+                            <label for="firstname" class="">{{ __('First Name') }}</label>
                         </div>
-                        @error('name')
+                        @error('firstname')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-material floating">
+                            <input id="othernames" type="text" class="form-control @error('othernames') is-invalid @enderror" name="othernames" value="{{ $user->othernames }}" autocomplete="off" autofocus>
+
+                            <label for="othernames" class="">{{ __('Other Name') }}</label>
+                        </div>
+                        @error('othernames')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-material floating">
+                            <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ $user->lastname }}" required autocomplete="off" autofocus>
+
+                            <label for="lastname" class="">{{ __('Last Name') }}</label>
+                        </div>
+                        @error('lastname')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -65,7 +93,7 @@
                         <select id="role" class="form-control @error('role') is-invalid @enderror" name="role[]"  required>
                                 <option value="">Select a role</option>
                                 @for ($i = 0; $i < count($roles); $i++)
-                                    <option value="{{array_keys($roles)[$i]}}" {{ $user->role === array_keys($roles)[$i]? ' selected':'' }}>{{$roles[array_keys($roles)[$i]]}}</option>
+                                    <option value="{{array_keys($roles)[$i]}}" {{ $user->roles[0]['name'] === array_keys($roles)[$i]? ' selected':'' }}>{{$roles[array_keys($roles)[$i]]}}</option>
                                 @endfor
                             </select>
                             <label for="role" class="">{{ __('Role') }}</label>

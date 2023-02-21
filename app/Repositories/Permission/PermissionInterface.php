@@ -1,9 +1,12 @@
 <?php
+
 namespace App\Repositories\Permission;
 
 use App\Permission;
+use Spatie\Permission\Models\Role;
 
-interface PermissionInterface {
+interface PermissionInterface
+{
 
     public function GetAllPermission();
 
@@ -15,7 +18,7 @@ interface PermissionInterface {
 
     public function UpdatePermission(Permission $permission, array $post_data);
 
-    public function GetPermissionsByRoles($roles);
+    public function GetPermissionsByRoles(array $roles);
 
     public function DeletePermission(Permission $permission);
 

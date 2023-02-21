@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Repositories\Tower;
 
 use App\AuditAgentTower;
@@ -22,7 +23,7 @@ class TowerRepository implements TowerInterface
 {
 
     private $towerowner,
-    $lga, $power;
+        $lga, $power, $user;
 
     public function __construct(UserInterface $user, LgaInterface $lga, PowerInterface $power)
     {
@@ -44,11 +45,15 @@ class TowerRepository implements TowerInterface
         return $tower->save();
     }
 
-
     public function GetTowerDraftByUser(User $user)
     {
         //dd($user->id);
         return $user->towerdraft;
+    }
+    public function GetTowerByUser(User $user)
+    {
+        //dd($user->id);
+        return $user->towerowners();
     }
 
     public function SoftDeleteTowerDraft(TowerDraft $towerdraft)
@@ -66,7 +71,7 @@ class TowerRepository implements TowerInterface
         return TowerDraft::find($id);
     }
 
-    public function GetAllPaginatedTowersById(Array $id)
+    public function GetAllPaginatedTowersById(array $id)
     {
         return Tower::whereIn('id', $id)->orderBy('id', 'DESC')->paginate(5);
     }
@@ -85,7 +90,7 @@ class TowerRepository implements TowerInterface
     {
         // dd(TenantTower::all());
         $tenanttower = TenantTower::find($tenanttowerid);
-        if(!$tenanttower) return null;
+        if (!$tenanttower) return null;
 
         return  $tenanttower->load("antennamake", "antennamodel", "tenant", "antennatype");;
     }
@@ -94,17 +99,17 @@ class TowerRepository implements TowerInterface
     {
         // dd(InsuranceCompanyTower::where('id', $towerinsuranceid)->get());
         $auditagenttower = AuditAgentTower::find($auditagenttowerid);
-        if(!$auditagenttower) return null;
+        if (!$auditagenttower) return null;
         return $auditagenttower->load("auditagent", "auditagenttoweraudittypes.audittype");
     }
 
-    public function DeleteTowerInsurance($towerinsuranceid, Array $delete_data)
+    public function DeleteTowerInsurance($towerinsuranceid, array $delete_data)
     {
         $tower = $this->GetTowerById($delete_data['delete_tower']);
         return $tower->insurancecompanies()->wherePivot('id', $towerinsuranceid)->detach();
     }
 
-    public function DeleteTowerTenant($towertenantid, Array $delete_data)
+    public function DeleteTowerTenant($towertenantid, array $delete_data)
     {
         $tower = $this->GetTowerById($delete_data['delete_tower']);
         $towertenantid = TenantTower::find($towertenantid);
@@ -123,7 +128,6 @@ class TowerRepository implements TowerInterface
                 'expires_at' => $post_data['insurance_expiry_date']
             ]
         );
-
     }
 
     public function AddTowerTenant($towerid, array $post_data)
@@ -147,7 +151,7 @@ class TowerRepository implements TowerInterface
         //dd($post_data);
         $tower->insurancecompanies()->wherePivot('id', $towerinsuranceid)->sync(
             [
-                $post_data['insurance_company']=>
+                $post_data['insurance_company'] =>
                 [
                     'insurance_policy_id' => $post_data['insurance_policy'],
                     'insurance_limit_id' => $post_data['insurance_limit'],
@@ -175,14 +179,14 @@ class TowerRepository implements TowerInterface
         $tower = $this->GetTowerById($towerid);
         // dd($date);
         // dd($a);
-        $tower->auditagents()->attach( $post_data['audit_agent_name'], [
+        $tower->auditagents()->attach($post_data['audit_agent_name'], [
             "audit_date" => $post_data["audit_schedule"]
         ]);
 
-        return $tower->auditagents->where("year(audit_date)", "<>", "year(".$post_data['audit_schedule'].")")->first();
+        return $tower->auditagents->where("year(audit_date)", "<>", "year(" . $post_data['audit_schedule'] . ")")->first();
     }
 
-    public function UpdateTowerAuditSchedule($towerauditscheduleid, Array $post_data)
+    public function UpdateTowerAuditSchedule($towerauditscheduleid, array $post_data)
     {
 
         // $tower = $this->GetTowerById($post_data['add_audit_tower']);
@@ -201,29 +205,25 @@ class TowerRepository implements TowerInterface
         return AuditAgentTower::where(["tower_id" => $towerid, "audit_agent_id" => $auditagentid, "audit_date" => $auditdate])->latest('id')->first();
     }
 
-    public function CreateAuditScheduleAudiType(AuditAgentTower $auditagenttower,Array $audittypeids)
+    public function CreateAuditScheduleAudiType(AuditAgentTower $auditagenttower, array $audittypeids)
     {
         // dd($audittypes);
-        foreach($audittypeids as $audittypeid)
-        {
+        foreach ($audittypeids as $audittypeid) {
             // dd($audittype);
-                $auditagenttower->audittypes()->attach($audittypeid);
+            $auditagenttower->audittypes()->attach($audittypeid);
         }
     }
 
     public function UpdateAuditScheduleAudiType(AuditAgentTower $auditagenttower, $auditscheduleauditypeid, $audittypes)
     {
-        foreach($audittypes as $audittype)
-        {
-                $auditagenttower->audittypes()->attach($audittype);
+        foreach ($audittypes as $audittype) {
+            $auditagenttower->audittypes()->attach($audittype);
         }
     }
 
     public function GetAllTowers()
     {
-        //return Tower::all();
-        $user = auth()->user();
-        return Tower::where('user_id', $user->id);
+        return Tower::all();
     }
 
     public function GetAllPaginatedTowers()
@@ -233,29 +233,30 @@ class TowerRepository implements TowerInterface
 
     public function GetTowerCount()
     {
-        $user=auth()->user();
-        return $this->GetAllTowers($user)->count();
+        return $this->GetAllTowers()->count();
     }
 
-    // public function GetUserTowerCount()
-    // {
-    //     return $this->GetAllPaginatedTowersById([$id])->count();
-    // }
-    
- public function GetTowerWeeklyCount(){
-    return Tower::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
-
- }
-    public function GetTowerMonthlyCount(){
-         return Tower::whereBetween('created_at', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])->count();
-
-    }
-    public function GetTowerAverageCount(){
-         return Tower::whereDate('created_at', Carbon::today())->count();
-
+    public function GetTowerCountByUser(User $user)
+    {
+        # code...
+        return $this->GetTowerByUser($user)->count();
     }
 
-      
+
+    public function GetTowerWeeklyCount()
+    {
+        return Tower::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
+    }
+    public function GetTowerMonthlyCount()
+    {
+        return Tower::whereBetween('created_at', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])->count();
+    }
+    public function GetTowerAverageCount()
+    {
+        return Tower::whereDate('created_at', Carbon::today())->count();
+    }
+
+
     public function GetTowerOwnerByTowerOwnerId($towerownerid)
     {
         return TowerOwner::find($towerownerid);
@@ -263,13 +264,10 @@ class TowerRepository implements TowerInterface
 
     public function CreateTowerOwnerUser($userid, $towerownerid, $towerid = 0)
     {
-        if($towerid > 0)
-        {
+        if ($towerid > 0) {
             $towerowner = $this->GetTowerOwnerByTowerOwnerId($towerownerid);
             return $towerowner->users()->attach($userid, ['tower_id' => $towerid]);
-        }
-        else
-        {
+        } else {
             $towerowner = $this->GetTowerOwnerByTowerOwnerId($towerownerid);
             return $towerowner->users()->attach($userid);
         }
@@ -293,21 +291,20 @@ class TowerRepository implements TowerInterface
 
     public function CreatePowerSourceTypeTower(Tower $tower, array $powersupplierids, array $powersourcetypeids)
     {
-        
+
         $tower->powersourcetypes()->detach();
-            foreach($powersourcetypeids as $x => $powersourcetypeid) {
-            
-              if(!is_numeric($powersupplierids[$x])) {
+        foreach ($powersourcetypeids as $x => $powersourcetypeid) {
+
+            if (!is_numeric($powersupplierids[$x])) {
                 $tower->powersourcetypes()->attach($powersourcetypeid, [
-                  "others" => $powersupplierids[$x],
+                    "others" => $powersupplierids[$x],
                 ]);
-              } else {
+            } else {
                 $tower->powersourcetypes()->attach($powersourcetypeid, [
-                  "power_supplier_id" => $powersupplierids[$x],
+                    "power_supplier_id" => $powersupplierids[$x],
                 ]);
-              }
             }
-        
+        }
     }
 
     public function GetPowerSourceTypeTowerByTowerId($towerid)
@@ -315,4 +312,3 @@ class TowerRepository implements TowerInterface
         return PowerSourceTypeTower::with("powersupplier", "powersourcetype")->where("tower_id", "=", $towerid)->get();
     }
 }
-

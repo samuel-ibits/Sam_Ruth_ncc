@@ -19,13 +19,13 @@ class RoleSeeder extends Seeder
                 'name' => 'admin',
                 "guard_name" => "web",
                 "description" => "Admin",
-                "permissions" => ["view_towers", "view_towers_report", "view_tenants_report", "view_audits_report", "view_maintenances_report", "view_insurances_report"]
+                "permissions" => ["view_towers", "view_towers_report", "view_tenants_report", "view_audits_report", "view_maintenances_report", "view_insurances_report", "admin_dashboard"]
 
             ], [
                 'name' => 'towerowner',
                 "guard_name" => "web",
                 "description" => "towerowner",
-                "permissions" => ["view_towers", "view_towers_report", "view_tenants_report", "view_audits_report", "view_maintenances_report", "view_insurances_report"]
+                "permissions" => ["view_towers", "view_towers_report", "view_tenants_report", "view_audits_report", "view_maintenances_report", "view_insurances_report", "user_dashboard"]
             ]
         ];
         for ($i = 0; $i < count($roles); $i++) {

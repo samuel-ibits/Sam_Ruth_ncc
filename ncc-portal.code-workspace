@@ -2,6 +2,24 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "C:\\Users\\jaakande\\Downloads\\codebaseadmin-32\\codebaseadmin-32\\Codebase 3.2 by pixelcave\\04 - Codebase Source (Laravel Starter Kit)\\resources\\js\\codebase"
+		},
+		{
+			"path": "C:\\Users\\jaakande\\Downloads\\codebaseadmin-32\\codebaseadmin-32\\Codebase 3.2 by pixelcave\\04 - Codebase Source (Laravel Starter Kit)\\resources\\js\\pages"
+		},
+		{
+			"path": "C:\\Users\\jaakande\\Downloads\\codebaseadmin-32\\codebaseadmin-32\\Codebase 3.2 by pixelcave\\04 - Codebase Source (Laravel Starter Kit)\\public\\css"
+		},
+		{
+			"path": "C:\\Users\\jaakande\\Downloads\\codebaseadmin-32\\codebaseadmin-32\\Codebase 3.2 by pixelcave\\04 - Codebase Source (Laravel Starter Kit)\\public\\fonts"
+		},
+		{
+			"path": "C:\\Users\\jaakande\\Downloads\\codebaseadmin-32\\codebaseadmin-32\\Codebase 3.2 by pixelcave\\04 - Codebase Source (Laravel Starter Kit)\\public\\js"
+		},
+		{
+			"path": "C:\\Users\\jaakande\\Downloads\\codebaseadmin-32\\codebaseadmin-32\\Codebase 3.2 by pixelcave\\04 - Codebase Source (Laravel Starter Kit)\\public\\media"
 		}
 	],
 	"settings": {}

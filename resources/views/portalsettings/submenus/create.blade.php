@@ -94,6 +94,24 @@
                     </div>
                 </div>
             @endif
+            <div class="form-group row">
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <div class="form-material">
+                        <label class="css-control css-control-primary css-checkbox">
+                            <input type="checkbox" id="is_visible" name="is_visible" class="css-control-input" checked value = true >
+                            <span class="css-control-indicator"></span> {{ __('Make Vissible') }}
+                        </label>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <div class="form-material">
+                        <label class="css-control css-control-primary css-checkbox">
+                            <input type="checkbox" id="is_entry" name = "is_entry" class="css-control-input" checked value = true >
+                            <span class="css-control-indicator"></span> {{ __('Make Entry') }}
+                        </label>
+                    </div>
+                </div>
+            </div>
 
             <div class="form-group row">
                 <div class="col-xs-12 col-sm-12 col-md-12">

@@ -29,6 +29,8 @@ class CreateMenusTable extends Migration
             $table->unsignedBigInteger('menu_id')->nullable();
             $table->unsignedBigInteger('permission_id')->nullable();
             $table->text('description');
+            $table->boolean('is_visible')->default(false);
+            $table->boolean('is_entry')->default(false);
             $table->timestamps();
             $table->softDeletes();
 

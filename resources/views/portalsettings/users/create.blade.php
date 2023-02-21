@@ -46,7 +46,7 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-material floating">
-                            <input id="othernames" type="text" class="form-control @error('othernames') is-invalid @enderror" name="othernames" value="{{ old('othernames') }}" required autocomplete="off" autofocus>
+                            <input id="othernames" type="text" class="form-control @error('othernames') is-invalid @enderror" name="othernames" value="{{ old('othernames') }}" autocomplete="off" autofocus>
 
                             <label for="othernames" class="">{{ __('Other Names') }}</label>
                         </div>

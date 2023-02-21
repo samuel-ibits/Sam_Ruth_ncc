@@ -63,6 +63,8 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
 
     Route::get('dashboards/index', 'Dashboard\IndexController@Index')->name('dashboards');
     Route::get('dashboards', 'Dashboard\IndexController@Index')->name('dashboards');
+    Route::get('dashboards/user', 'Dashboard\UserController@Index')->name('user.dashboards');
+    Route::get('dashboards/admin', 'Dashboard\AdminController@Index')->name('admin.dashboards');
     Route::resource('towers', 'TowerController');
     Route::post('towers/checkiftowernameexists', 'TowerController@checkiftowernameexists');
     Route::post('towers/checkifnccidentityexists', 'TowerController@checkifnccidentityexists');

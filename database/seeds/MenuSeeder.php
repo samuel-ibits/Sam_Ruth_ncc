@@ -15,7 +15,8 @@ class MenuSeeder extends Seeder
         //
         $menus = [
             ["name" => "Towers", "description" => "Tower", "folder" => "towers"],
-            ["name" => "Reports", "description" => "Report", "folder" => "reports"]
+            ["name" => "Reports", "description" => "Report", "folder" => "reports"],
+            ["name" => "Dashboard", "description" => "Dashboard", "folder" => "dashboards"]
         ];
 
         for($i = 0; $i < count($menus); $i++) {
