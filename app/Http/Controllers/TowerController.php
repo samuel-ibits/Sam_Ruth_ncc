@@ -547,7 +547,7 @@ class TowerController extends Controller
             'agent_ncc_licence' => 'required',
             'maintenance_schedule' => 'required'
         ]);
-        $post_data = $request->paginate(5);
+        $post_data = $request;
         // dd($request);
         if ($request->has("add_maintenance_tower") && isset($towerid)) {
             if ($towerid === $request['add_maintenance_tower']) {
@@ -766,8 +766,8 @@ class TowerController extends Controller
             'add_audit_tower' => 'required',
             'search_audit_agent_name' => 'required',
             'audit_schedule' => 'required',
-            'audit_types_id' => "required|array|min:1",
-            'audit_types_auditagenttoweraudittype' => "required|array|min:1",
+            'audit_types_id' => "required",
+            'audit_types_auditagenttoweraudittype' => "required",
             'audit_types_id.*' => 'required',
             'audit_types_auditagenttoweraudittype' => 'required',
         ]);
@@ -775,7 +775,7 @@ class TowerController extends Controller
             return $b;
         }, $request["audit_types_id"]);
         // dd($a);
-
+    //   $a=  $request["audit_types_id"];
         if ($request['add_audit_tower']) {
             $auditagent = $this->audit->GetAuditAgentById($request["audit_agent_name"]);
             if (!$auditagent) {
