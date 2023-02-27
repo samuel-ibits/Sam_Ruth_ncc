@@ -16,12 +16,18 @@ use Carbon\Carbon;
 class DashboardRepository implements DashboardInterface
 {
 
-    private TowerInterface $tower;
-    private TenantInterface $tenant;
-    private InsuranceInterface $insurance;
-    private MaintenanceInterface $maintenance;
-    private AuditInterface $audit;
+    // private TowerInterface $tower;
+    private $tower;
 
+    // private TenantInterface $tenant;
+    // private InsuranceInterface $insurance;
+    // private MaintenanceInterface $maintenance;
+    // private AuditInterface $audit;
+
+    private $tenant;
+    private $insurance;
+    private $maintenance;
+    private $audit;
 
 
     public function __construct(

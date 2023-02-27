@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    private DashboardInterface $dashboard;
+    private $dashboard;
 
     public function __construct(DashboardInterface $dashboard)
     {

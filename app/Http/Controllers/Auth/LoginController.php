@@ -28,7 +28,9 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/dashboards';
-    protected MenuInterface $menu;
+    // protected MenuInterface $menu;
+    protected $menu;
+
     /**
      * Create a new controller instance.
      *

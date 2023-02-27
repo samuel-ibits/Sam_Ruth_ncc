@@ -11,8 +11,8 @@ use Illuminate\Http\Request;
 
 class SubmenuRepository implements SubmenuInterface
 {
-    private PermissionInterface $permission;
-    private MenuInterface $menu;
+    private $permission;
+    private $menu;
 
     public function __construct(PermissionInterface $permission, MenuInterface $menu)
     {

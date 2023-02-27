@@ -13,7 +13,8 @@ use Spatie\Permission\Models\Role;
 class MenuRepository implements MenuInterface
 {
 
-    private PermissionInterface $permission;
+    // private PermissionInterface $permission;
+    private $permission;
 
     public function __construct(PermissionInterface $permission)
     {
