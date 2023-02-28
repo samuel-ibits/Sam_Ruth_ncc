@@ -762,6 +762,7 @@ class TowerController extends Controller
 
     public function updatetowerauditschedule(Request $request, $auditagenttowerid)
     {
+        
         $request->validate([
             'add_audit_tower' => 'required',
             'search_audit_agent_name' => 'required',
