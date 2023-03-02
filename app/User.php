@@ -46,6 +46,12 @@ class User extends Authenticatable implements MustVerifyEmail
         ])->withTimestamps();
     }
 
+    
+    public function tenantuser()
+    {
+        return $this->belongsToMany('App\TenantUser')->withPivot('id');
+    }
+
     public function towerdraft()
     {
         return $this->hasOne("App\TowerDraft");

@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class TowerOwnerUser extends Pivot
+class TenantUser extends Pivot
 {
     //
+    protected $table = 'tenant_user';
+
     public $incrementing = true;
 
     public function user ()
@@ -16,14 +18,13 @@ class TowerOwnerUser extends Pivot
         return $this->belongsTo("App\User");
     }
 
-    public function tower ()
+    public function tenanttower ()
     {
-        return $this->belongsTo("App\Tower");
+        return $this->belongsTo("App\TenantTower");
     }
 
-    public function towerowner ()
+    public function tenant ()
     {
-        return $this->belongsTo("App\TowerOwner", "tower_owner_id");
+        return $this->belongsTo("App\Tenant", "tenant_tower_id");
     }
-
 }

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    private DashboardInterface $dashboard;
+    private $dashboard;
 
     public function __construct(DashboardInterface $dashboard)
     {
@@ -19,7 +19,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $towercount = $this->dashboard->GetTowerCount($user);
-        $tenantcount = $this->dashboard->GetTenantTowerCount();
+        $tenantcount = $this->dashboard->GetTenantTowerCount($user);
         $insurancecount = $this->dashboard->GetInsurancesCount();
         $maintenancecount = $this->dashboard->GetMaintenancesCount();
         $auditcount = $this->dashboard->GetAuditsCount();

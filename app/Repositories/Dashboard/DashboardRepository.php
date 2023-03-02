@@ -12,16 +12,17 @@ use App\Repositories\Tenant\TenantInterface;
 use App\Repositories\Tower\TowerInterface;
 use App\User;
 use Carbon\Carbon;
+use App\TenantUser;
 
 class DashboardRepository implements DashboardInterface
 {
+    
 
-    private TowerInterface $tower;
-    private TenantInterface $tenant;
-    private InsuranceInterface $insurance;
-    private MaintenanceInterface $maintenance;
-    private AuditInterface $audit;
-
+    private $tower;
+    private $tenant;
+    private $insurance;
+    private $maintenance;
+    private $audit;
 
 
     public function __construct(
@@ -46,8 +47,15 @@ class DashboardRepository implements DashboardInterface
         return $this->tower->GetTowerCount();
     }
 
-    public function GetTenantTowerCount()
+    public function GetTenantTowerCount(User $user = null)
     {
+     
+        // $user = $tenantUser->user;
+        // $tenant = $tenantUser->tenant;
+
+        if($user){
+            return $this->tenant-> GetTenantCountByUser($user);
+        }
         return $this->tenant->GetOccupiedTenantCount();
     }
 

@@ -3,6 +3,9 @@ namespace App\Repositories\Tenant;
 
 use App\Tenant;
 use App\TenantTower;
+use App\User;
+use App\Repositories\User\UserInterface;
+use App\TenantUser;
 
 class TenantRepository implements TenantInterface
 {
@@ -35,6 +38,17 @@ class TenantRepository implements TenantInterface
     public function GetAllTenants()
     {
         return Tenant::all();
+    }
+
+    public function GetTenantByUser(User $user)
+    {
+        return $user->tenantuser();
+    }
+
+    public function GetTenantCountByUser(User $user)
+    {
+        # code...
+        return $this->GetTenantByUser($user)->count();
     }
 
     public function GetAllTenantTowers()

@@ -50,6 +50,7 @@ class TowerRepository implements TowerInterface
         //dd($user->id);
         return $user->towerdraft;
     }
+    
     public function GetTowerByUser(User $user)
     {
         //dd($user->id);

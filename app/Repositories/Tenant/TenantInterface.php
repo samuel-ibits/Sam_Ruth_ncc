@@ -1,6 +1,8 @@
 <?php
 namespace App\Repositories\Tenant;
 
+use App\User;
+use App\Tenant;
 
 interface TenantInterface
 {
@@ -20,5 +22,9 @@ interface TenantInterface
     public function GetAllTenantTowers();
 
     public function GetAllPaginatedTenants();
+
+    public function GetTenantByUser(User $user);
+
+    public function GetTenantCountByUser(User $user);
 
 }
