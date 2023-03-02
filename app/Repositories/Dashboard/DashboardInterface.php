@@ -10,11 +10,11 @@ interface DashboardInterface
 
   public function GetTenantTowerCount();
 
-  public function GetInsurancesCount();
+  public function GetInsurancesCount($id);
 
   public function GetMaintenancesCount();
 
-  public function GetAuditsCount();
+  public function GetAuditsCount($id);
 
   public function GetTowerWeeklyCount();
   public function GetTowerMonthlyCount();

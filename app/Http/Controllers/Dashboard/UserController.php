@@ -19,10 +19,10 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $towercount = $this->dashboard->GetTowerCount($user);
-        $tenantcount = $this->dashboard->GetTenantTowerCount();
-        $insurancecount = $this->dashboard->GetInsurancesCount();
-        $maintenancecount = $this->dashboard->GetMaintenancesCount();
-        $auditcount = $this->dashboard->GetAuditsCount();
+        $tenantcount = $this->dashboard->GetTenantTowerCount($user);
+        $insurancecount = $this->dashboard->GetInsurancesCount($user);
+        $maintenancecount = $this->dashboard->GetMaintenancesCount($user);
+        $auditcount = $this->dashboard->GetAuditsCount($user);
 
         $towerWeeklyCount = $this->dashboard->GetTowerWeeklyCount();
         $towerMonthlyCount = $this->dashboard->GetTowerMonthlyCount();

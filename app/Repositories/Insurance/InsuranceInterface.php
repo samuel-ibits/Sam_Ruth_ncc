@@ -6,7 +6,7 @@ interface InsuranceInterface
 {
     public function GetAllInsuranceCompanies();
 
-    public function GetAllInsurancesCount();
+    public function GetAllInsurancesCount($id);
 
     public function GetAllInsuranceLimits();
 

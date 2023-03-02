@@ -14,9 +14,13 @@ class InsuranceRepository implements InsuranceInterface
         return InsuranceCompany::all();
     }
 
-    public function GetAllInsurancesCount()
+    public function GetAllInsurancesCount($id)
     {
-        return $this->GetAllInsurances()->count();
+        return $this->GetAllInsurances()->whereIn('id', $id)->count();
+        // return Tower::whereIn('id', $id)->orderBy('id', 'DESC')->paginate(5);
+
+  
+        // return Tower::find($towerid);
     }
 
     public function GetAllInsuranceLimits()

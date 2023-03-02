@@ -57,9 +57,9 @@ class DashboardRepository implements DashboardInterface
         return $this->tenant->GetOccupiedTenantCount();
     }
 
-    public function GetInsurancesCount()
+    public function GetInsurancesCount($id)
     {
-        return $this->insurance->GetAllInsurancesCount();
+        return $this->insurance->GetAllInsurancesCount($id);
     }
 
     public function GetMaintenancesCount()
@@ -67,9 +67,9 @@ class DashboardRepository implements DashboardInterface
         return $this->maintenance->GetAllMaintenancesCount();
     }
 
-    public function GetAuditsCount()
+    public function GetAuditsCount($id)
     {
-        return $this->audit->GetAuditAgentCount();
+        return $this->audit->GetAuditAgentCount($id);
     }
 
     public function GetTowerWeeklyCount()

@@ -31,9 +31,9 @@ class AuditRepository implements AuditInterface
         return AuditAgent::create(["name" => $auditagentname]);
     }
 
-    public function GetAuditAgentCount()
+    public function GetAuditAgentCount($id)
     {
-        return $this->GetAllTowerAudits()->count();
+        return $this->GetAllTowerAudits()->whereIn('id', $id)->count();
     }
 
     public function GetAuditAgentTowerById($auditagentid)

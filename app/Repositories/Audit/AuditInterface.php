@@ -14,7 +14,7 @@ interface AuditInterface
 
     public function CreateAuditAgent($auditagentname);
 
-    public function GetAuditAgentCount();
+    public function GetAuditAgentCount($id);
 
     public function GetAuditAgentTowerById($auditagenttowerid);
 
