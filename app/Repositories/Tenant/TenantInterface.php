@@ -13,7 +13,7 @@ interface TenantInterface
 
     public function CreateTenant($name);
 
-    public function GetOccupiedTenantCount();
+    public function GetOccupiedTenantCount($id);
 
     public function GetAllTenants();
     

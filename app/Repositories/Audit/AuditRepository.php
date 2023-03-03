@@ -33,7 +33,10 @@ class AuditRepository implements AuditInterface
 
     public function GetAuditAgentCount($id)
     {
+        if ($id==null){return $this->GetAllTowerAudits()->count();
+        }else{
         return $this->GetAllTowerAudits()->whereIn('id', $id)->count();
+    }
     }
 
     public function GetAuditAgentTowerById($auditagentid)

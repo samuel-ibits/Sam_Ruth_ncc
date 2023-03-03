@@ -16,7 +16,7 @@ interface MaintenanceInterface {
 
     public function GetMaintenanceAgentByNCCLicence($ncclicence);
 
-    public function GetAllMaintenancesCount();
+    public function GetAllMaintenancesCount($id);
 
     public function SearchMaintenanceEngineerByNameAndAgentId($maintenanceengineername, $maintenanceagentid);
 

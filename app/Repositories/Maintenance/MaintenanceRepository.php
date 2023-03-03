@@ -36,9 +36,13 @@ class MaintenanceRepository implements MaintenanceInterface
         return MaintenanceAgent::where("ncc_licence", $ncclicence)->first();
     }
 
-    public function GetAllMaintenancesCount()
+    public function GetAllMaintenancesCount($id)
     {
-        return $this->GetAllMaintenances()->count();
+        if ($id==null){
+            return $this->GetAllMaintenances()->count();
+        }else{
+            return $this->GetAllMaintenances()->whereIn('id', $id)->count();}
+
     }
     public function SearchMaintenanceEngineerByNameAndAgentId($maintenanceengineername, $maintenanceagentid)
     {

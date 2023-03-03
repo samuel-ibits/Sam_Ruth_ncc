@@ -16,11 +16,11 @@ class AdminController extends Controller
     }
     public function index()
     {
-        $towercount = $this->dashboard->GetTowerCount();
-        $tenantcount = $this->dashboard->GetTenantTowerCount();
-        $insurancecount = $this->dashboard->GetInsurancesCount();
-        $maintenancecount = $this->dashboard->GetMaintenancesCount();
-        $auditcount = $this->dashboard->GetAuditsCount();
+        $towercount = $this->dashboard->GetTowerCount($id=null);
+        $tenantcount = $this->dashboard->GetTenantTowerCount($id=null);
+        $insurancecount = $this->dashboard->GetInsurancesCount($id=null);
+        $maintenancecount = $this->dashboard->GetMaintenancesCount($id=null);
+        $auditcount = $this->dashboard->GetAuditsCount($id=null);
 
         $towerWeeklyCount = $this->dashboard->GetTowerWeeklyCount();
         $towerMonthlyCount = $this->dashboard->GetTowerMonthlyCount();

@@ -26,8 +26,13 @@ class TenantRepository implements TenantInterface
         return Tenant::create(["name"=>$name]);
     }
 
-    public function GetOccupiedTenantCount()
+    public function GetOccupiedTenantCount($id)
     {
+        if ($id==null){
+            return $this->GetAllTenantTowers()->count();
+        }else{
+            return $this->GetAllTenantTowers()->whereIn('id', $id)->count();}
+
         //return $this->GetAllTenants()->count();
         return $this->GetAllTenantTowers()->count();
     }

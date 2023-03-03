@@ -8,11 +8,11 @@ interface DashboardInterface
 {
   public function GetTowerCount(User $user = null);
 
-  public function GetTenantTowerCount();
+  public function GetTenantTowerCount($id);
 
   public function GetInsurancesCount($id);
 
-  public function GetMaintenancesCount();
+  public function GetMaintenancesCount($id);
 
   public function GetAuditsCount($id);
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Repositories\Dashboard\DashboardInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class IndexController extends Controller
 {
@@ -16,11 +18,12 @@ class IndexController extends Controller
     }
     public function index()
     {
-        $towercount = $this->dashboard->GetTowerCount();
-        $tenantcount = $this->dashboard->GetTenantTowerCount();
-        $insurancecount = $this->dashboard->GetInsurancesCount();
-        $maintenancecount = $this->dashboard->GetMaintenancesCount();
-        $auditcount = $this->dashboard->GetAuditsCount();
+        $user = Auth::user();
+        $towercount = $this->dashboard->GetTowerCount($user);
+        $tenantcount = $this->dashboard->GetTenantTowerCount($user);
+        $insurancecount = $this->dashboard->GetInsurancesCount($user);
+        $maintenancecount = $this->dashboard->GetMaintenancesCount($user);
+        $auditcount = $this->dashboard->GetAuditsCount($user);
 
     $towerWeeklyCount = $this->dashboard->GetTowerWeeklyCount();
     $towerMonthlyCount = $this->dashboard->GetTowerMonthlyCount();
