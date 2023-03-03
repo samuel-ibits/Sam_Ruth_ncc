@@ -6,7 +6,7 @@ use App\User;
 
 interface DashboardInterface
 {
-  public function GetTowerCount(User $user = null);
+  public function GetTowerCount($id);
 
   public function GetTenantTowerCount($id);
 
