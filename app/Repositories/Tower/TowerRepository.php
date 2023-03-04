@@ -231,9 +231,15 @@ class TowerRepository implements TowerInterface
         return Tower::orderBy("id", 'DESC')->paginate(5);
     }
 
-    public function GetTowerCount()
+    public function GetTowerCount($id)
     {
-        return $this->GetAllTowers()->count();
+        if ($id==null){
+            return $this->GetAllTowers()->count();
+        }else{
+            return $this->GetAllTowers()->whereIn('id', $id)->count();}
+
+       
+        // return $this->GetAllTowers()->count();
     }
 
     public function GetTowerCountByUser(User $user)

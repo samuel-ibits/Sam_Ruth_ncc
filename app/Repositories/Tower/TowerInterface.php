@@ -66,7 +66,7 @@ interface TowerInterface
 
     public function GetAllTowers();
 
-    public function GetTowerCount();
+    public function GetTowerCount($id);
 
     public function GetTowerCountByUser(User $user);
 

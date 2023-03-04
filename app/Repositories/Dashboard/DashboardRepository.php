@@ -44,12 +44,12 @@ class DashboardRepository implements DashboardInterface
         $this->audit = $audit;
     }
 
-    public function GetTowerCount(User $user = null)
+    public function GetTowerCount($id)
     {
-        if($user) {
-            return $this->tower->GetTowerCountByUser($user);
-        }
-        return $this->tower->GetTowerCount();
+        // if($user) {
+        //     return $this->tower->GetTowerCountByUser($user);
+        // }
+        return $this->tower->GetTowerCount($id);
     }
 
     public function GetTenantTowerCount($id)
